@@ -4,10 +4,11 @@ import shutil, tempfile, os
 
 class PGitTest(unittest.TestCase):
     def test_init(self):
-        print("blah {}".format(self.test_dir))
         pgit.init(self.test_dir)
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, ".git")))
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, ".git", "HEAD")))
+        self.assertTrue(os.path.exists(os.path.join(self.test_dir, ".git", "refs")))
+        self.assertTrue(os.path.exists(os.path.join(self.test_dir, ".git", "objects")))
 
     def setUp(self):
         # Create a temporary directory

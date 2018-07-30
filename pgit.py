@@ -2,8 +2,9 @@ import argparse
 import os
 
 
-def init(git_dir):
-    os.mkdir(os.path.join(git_dir, ".git"))
+def init(root_dir):
+    git_dir = os.path.join(root_dir, ".git")
+    os.mkdir(git_dir)
     os.mkdir(os.path.join(git_dir, "refs"))
     os.mkdir(os.path.join(git_dir, "objects"))
     open(os.path.join(git_dir, "HEAD"), "w").close()
