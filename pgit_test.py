@@ -22,7 +22,12 @@ class PGitTest(unittest.TestCase):
 
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, ".git", "refs", "heads")), ".git/refs/heads")
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, ".git", "refs", "tags")), ".git/refs/tags")
-
+        
+        head_file = open(os.path.join(self.test_dir, ".git", "HEAD"))
+        head_file_contents = head_file.read()
+        head_file.close()
+        self.assertEqual("ref: refs/heads/master", head_file_contents, "Ensuring HEAD points to master")
+        
     def setUp(self):
         # Create a temporary directory
         self.test_dir = tempfile.mkdtemp()

@@ -17,7 +17,9 @@ def init(root_dir):
     for name in starting_dirs:
         os.mkdir(name)
 
-    open(os.path.join(git_dir, "HEAD"), "w").close()
+    head_file = open(os.path.join(git_dir, "HEAD"), "wb")
+    head_file.write(b'ref: refs/heads/master')
+    head_file.close()
     print ("Initialised empty git repository in {}". format (git_dir))
 
 
